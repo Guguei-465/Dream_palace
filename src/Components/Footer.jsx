@@ -3,6 +3,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaWhatsapp,
+  
 } from "react-icons/fa";
 
 const Footer = () => {
