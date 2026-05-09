@@ -1,34 +1,82 @@
- // components/Navbar.jsx
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Navbar() {
+
   const [user, setUser] = useState(null);
+
+  const [search, setSearch] = useState("");
+
   const navigate = useNavigate();
 
-  // Load user from localStorage
+  // GET USER
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+
+    const storedUser =
+      localStorage.getItem("user");
+
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+
+      setUser(
+        JSON.parse(storedUser)
+      );
     }
+
   }, []);
 
-  // Logout function
+  // LOGOUT
   const handleLogout = () => {
+
     localStorage.removeItem("user");
+
     setUser(null);
-    navigate("/signin");
+
+    navigate("/Signup");
+  };
+
+  // SEARCH
+  const handleSearch = (e) => {
+
+    e.preventDefault();
+
+    if (search.trim() !== "") {
+
+      navigate("/Search", {
+
+        state: {
+
+          query: search
+
+        }
+      });
+
+      setSearch("");
+    }
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-      <NavLink className="navbar-brand text-warning fw-bold" to="/">
-        DREAM <br />
-        Palace
+    <nav
+      className="navbar navbar-expand-lg position-absolute top-0 start-0 w-100"
+      style={{
+        zIndex: 1000,
+        padding: "18px 50px",
+        background: "rgba(226, 212, 15, 0.7)",
+        backdropFilter: "blur(12px)",
+      }}
+    >
+
+      {/* LOGO */}
+      <NavLink
+        className="navbar-brand fw-bold text-white"
+        to="/"
+      >
+        DREAM
+        <span style={{ color: "#d4af37" }}>
+          {" "}PALACE
+        </span>
       </NavLink>
 
-      {/* Mobile toggle */}
+      {/* TOGGLER */}
       <button
         className="navbar-toggler"
         type="button"
@@ -38,74 +86,126 @@ function Navbar() {
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ms-auto">
+      <div
+        className="collapse navbar-collapse"
+        id="navbarNav"
+      >
 
-          {/* Always visible */}
+        {/* SEARCH BAR */}
+        <form
+          onSubmit={handleSearch}
+          className="d-flex mx-auto"
+          style={{ width: "320px" }}
+        >
+
+          <input
+            type="text"
+            placeholder="Search what you wants here..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+            className="form-control"
+            style={{
+              borderRadius: "30px 0 0 30px",
+              border: "none",
+              padding: "8px 15px",
+              outline: "none",
+            }}
+          />
+
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              background: "#d4af37",
+              color: "#111",
+              fontWeight: "600",
+              borderRadius: "0 30px 30px 0",
+              padding: "8px 15px",
+            }}
+          >
+            Search
+          </button>
+
+        </form>
+
+        {/* LINKS */}
+        <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
           <li className="nav-item">
-            <NavLink to="/" className="btn btn-primary ms-3">
+            <NavLink
+              className="nav-link custom-link"
+              to="/"
+            >
               Home
             </NavLink>
           </li>
 
-          
+          <li className="nav-item">
+            <NavLink
+              className="nav-link custom-link"
+              to="/Videos"
+            >
+              Videos
+            </NavLink>
+          </li>
 
-          {/* Conditional Rendering */}
           {user ? (
             <>
-              {/* Username */}
+
               <li className="nav-item">
-                <span className="nav-link text-success fw-bold">
+                <span className="nav-link text-warning fw-semibold">
                   {user.username}
                 </span>
               </li>
 
-              {/* Logout */}
               <li className="nav-item">
                 <button
                   onClick={handleLogout}
-                  className="btn btn-sm btn-danger ms-2"
+                  className="btn btn-outline-warning"
                 >
                   Logout
                 </button>
               </li>
+
             </>
           ) : (
             <>
+
               <li className="nav-item">
-                <NavLink to="/Houses" className="btn btn-primary ms-3">
+                <NavLink
+                  className="nav-link custom-link"
+                  to="/Menu"
+                >
+                  Menu
+                </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link custom-link"
+                  to="/Houses"
+                >
                   Houses
                 </NavLink>
               </li>
 
               <li className="nav-item">
-                <NavLink to="/Menu" className="btn btn-primary ms-3">
-                  Menu
-                </NavLink>
-              </li>
-              
-               <li className="nav-item">
-                <NavLink to="/Videos" className="btn btn-primary ms-3">
-                  Videos
+                <NavLink
+                  className="nav-link custom-link bg-warning w-45px"
+                  to="/Mpesa"
+                >
+                  Book Now
                 </NavLink>
               </li>
 
-              <li className="nav-item">
-            <NavLink className="btn btn-warning ms-3" to="/Mpesa">
-             Book Now
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
-                <NavLink to="/AddProduct" className="btn btn-primary ms-3">
-                  AddProducts
-                </NavLink>
-              </li>
             </>
           )}
-
         </ul>
       </div>
+
+      
     </nav>
   );
 }

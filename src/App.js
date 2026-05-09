@@ -1,55 +1,69 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation, BrowserRouter} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Components
 import Houses from './Components/Houses';
 import Menu from './Components/Menu';
 import Signup from './Components/Signup';
 import Signin from './Components/Signin';
 import GetProduct from './Components/GetProduct';
 import Mpesa from './Components/Mpesa';
-import Addproduct from './Components/AddProduct';
+import AddProduct from './Components/AddProduct';
+import AddMenu from './Components/AddMenu';   
+import AddHouses from './Components/AddHouses';
 import Navbar from './Components/Navbar';
-import { Carousel } from 'bootstrap';
 import Footer from './Components/Footer';
 import Videos from './Components/Videos';
-import Courosel from './Components/Carousel';
-import AddHouse from './Components/AddHouse';
-import AddMenu from './Components/AddMenu';
-import AddVideo from './Components/AddVideo';
+import Carousel from './Components/Carousel';
+import Search from "./Components/Search";
 
-
- 
 function App() {
   const [image, setImage] = useState(null);
+
   return (
-     
-    
     <Router>
       <div className="App">
-       
 
-         {/* <Navbar/> */}
-         {/* collapsed the entire navbar into a component */}
-      <Navbar/>
+        {/* NAVBAR */}
+        <Navbar />
 
-        {/* carousel */}
-        
+        {/* CAROUSEL */}
+        <Carousel />
 
+        {/* ROUTES */}
         <Routes>
+
           <Route path="/" element={<GetProduct />} />
+
           <Route path="/Houses" element={<Houses />} />
+
           <Route path="/Menu" element={<Menu />} />
+
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
+
+          <Route path="/Signin" element={<Signin />} />
+
           <Route path="/GetProduct" element={<GetProduct />} />
+
           <Route path="/Videos" element={<Videos />} />
-          <Route path="/AddProduct" element={<Addproduct />} />
-          <Route path="/mpesa" element={<Mpesa />} />
+
+          <Route path="/AddProduct" element={<AddProduct />} />
+
+          <Route path="/AddHouses" element={<AddHouses />} />
+
+          <Route path="/AddMenu" element={<AddMenu />} />
+
+          <Route path="/Mpesa" element={<Mpesa />} />
+
+          <Route path="/Search" element={<Search />} />
+
         </Routes>
-        
-        {/* footer */}
-        <Footer/>
+
+        {/* FOOTER */}
+        <Footer />
+
       </div>
     </Router>
   );

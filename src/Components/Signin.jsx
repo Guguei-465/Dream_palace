@@ -1,82 +1,202 @@
- import React, { useState } from 'react'
- import{Link, useNavigate} from 'react-router-dom'
-import axios from 'axios'
- 
- const Signin = () =>{
-  const[email,setEmail]=useState("")
-  const[password,setPassword]=useState("")
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-   // status messages
-    const [loading,setLoading] = useState("")
-    const [success,setSuccess] = useState("")
-    const [error,setError] = useState("")
+const Signin = () => {
 
-    // navigation
-    const navigate = useNavigate();
+  // FORM STATES
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-   
-   
-    // function to sign in
+  // STATUS STATES
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-    const handleSignin = async(e)=>{
-      e.preventDefault()
-      setLoading("Please wait...")
-      try{
-      // fetching user details
+  // NAVIGATION
+  const navigate = useNavigate();
+
+  // SIGNIN FUNCTION
+  const handleSignin = async (e) => {
+
+    e.preventDefault();
+
+    // CLEAR OLD MESSAGES
+    setError("");
+    setSuccess("");
+
+    // VALIDATION
+    if (!email || !password) {
+
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+
+      // FORM DATA
       const formData = new FormData();
-      formData.append("email",email)
-      formData.append("password",password)
 
-      // adding base url
-      const response = await axios.post("https://ryacksonfungo.alwaysdata.net/api/signin",formData);
-      if (response.data.user){
-        setSuccess(response.data.message)
-        // saving user in local storage
-        localStorage.setItem("user",JSON.stringify(response.data.user))
-        navigate("/")
-        setLoading("")
-      }else{
-        setError(error.message)
+      formData.append("email", email);
+      formData.append("password", password);
+
+      // API REQUEST
+      const response = await axios.post(
+        "https://ryacksonfungo.alwaysdata.net/api/signin",
+        formData
+      );
+
+      // SUCCESS LOGIN
+      if (response.data.user) {
+
+        setSuccess(
+          "Login successful. Redirecting..."
+        );
+
+        // SAVE USER
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.user)
+        );
+
+        setLoading(false);
+
+        // REDIRECT
+        setTimeout(() => {
+
+          navigate("/GetProduct");
+
+        }, 2000);
+
+      } else {
+
+        setError(
+          response.data.message ||
+          "Invalid credentials."
+        );
+
+        setLoading(false);
       }
-    }catch(error){
-      setError(error.message)
-    }
 
-    }
-  
-   return (
-    
-     <div className='row justify-content-center '>
-       <div className='col-md-6 card shadow m-2 p-4 bg-light'>
-          <h1 className='text-light'>Signin</h1>
-          {/* binding */}
-          {email}<br/>
-          {password}
-          {success}
-          {error}
-          {loading}
+    } catch (err) {
 
+      setError(
+        err.response?.data?.message ||
+        "Something went wrong. Please try again."
+      );
+
+      setLoading(false);
+    }
+  };
+
+  return (
+
+    <div className="signin-page">
+
+      {/* LOGIN CARD */}
+      <div className="signin-card">
+
+        {/* HEADER */}
+        <div className="text-center mb-4">
+
+          <h1 className="signin-title">
+            Welcome Back
+          </h1>
+
+          <p className="signin-subtitle">
+            Sign in to continue
+          </p>
+
+        </div>
+
+        {/* SUCCESS */}
+        {success && (
+          <div className="signin-success">
+            {success}
+          </div>
+        )}
+
+        {/* ERROR */}
+        {error && (
+          <div className="signin-error">
+            {error}
+          </div>
+        )}
+
+        {/* FORM */}
         <form onSubmit={handleSignin}>
-          <input type="email"
-           placeholder='Enter Email' 
-           className='form-control' 
-           onChange={(e=>setEmail(e.target.value))}/><br />
 
-          <input type="password" 
-          placeholder='Enter Password' 
-          className='form-control'
-          onChange={(e=>setPassword(e.target.value))}/><br />
+          {/* EMAIL */}
+          <div className="mb-3">
 
-          <input type='submit' 
-          value={loading? "Login...":"signin"} 
-          disable={loading}
-          className='btn btn-primary w-75'/><br />
-          
-          Don't have an account?<Link to='/Signup' className='text-infor'>Create one</Link>
+            <label className="signin-label">
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="form-control signin-input"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+            />
+
+          </div>
+
+          {/* PASSWORD */}
+          <div className="mb-4">
+
+            <label className="signin-label">
+              Password
+            </label>
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="form-control signin-input"
+              value={password}
+              onChange={(e) =>
+                setPassword(e.target.value)
+              }
+            />
+
+          </div>
+
+          {/* BUTTON */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="signin-btn"
+          >
+            {loading
+              ? "Signing In..."
+              : "Sign In"}
+          </button>
+
         </form>
-       </div>
-     </div>
-   )
- }
- 
- export default Signin
+
+        {/* SIGNUP LINK */}
+        <p className="signin-footer">
+
+          Don’t have an account?{" "}
+
+          <Link
+            to="/Signup"
+            className="signin-link"
+          >
+            Create One
+          </Link>
+
+        </p>
+
+      </div>
+
+    </div>
+  );
+};
+
+export default Signin;

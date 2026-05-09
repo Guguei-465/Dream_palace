@@ -70,3 +70,653 @@
 .hover-img:hover {
   transform: scale(1.1);
 }
+
+/* MPESA / MTN MOMO */
+
+.mpesa-container{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+.mpesa-card{
+  width: 100%;
+  max-width: 500px;
+  background: rgba(0,0,0,0.88);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid rgba(255,204,0,0.25);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  transition: 0.3s ease;
+}
+
+.mpesa-card:hover{
+  transform: translateY(-5px);
+}
+
+.mpesa-image-wrapper{
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mpesa-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mtn-badge{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffcc00;
+  color: #000;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.mpesa-body{
+  padding: 25px;
+}
+
+.mpesa-header{
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.mpesa-title{
+  color: #ffcc00;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.mpesa-subtitle{
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mpesa-success{
+  background: rgba(255,204,0,0.15);
+  color: #ffdd33;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mpesa-error{
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mpesa-loading{
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mpesa-product-name{
+  color: #fff;
+  font-weight: 700;
+}
+
+.mpesa-description{
+  color: #cbd5e1;
+  margin: 10px 0;
+}
+
+.mpesa-price{
+  color: #ffcc00;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.mpesa-label{
+  color: #fff;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mpesa-input{
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,204,0,0.25);
+  color: #fff;
+  padding: 14px;
+  border-radius: 14px;
+  outline: none;
+}
+
+.mpesa-input::placeholder{
+  color: #aaa;
+}
+
+.mpesa-btn{
+  width: 100%;
+  max-width: 220px;
+  display: block;
+  margin: 20px auto 0;
+  background: linear-gradient(135deg, #ffcc00, #ffd633);
+  color: #000;
+  border: none;
+  padding: 11px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.mpesa-btn:hover{
+  transform: scale(1.05);
+}
+
+.mpesa-empty{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+  color: white;
+}
+ 
+
+/* SIGNIN PAGE */
+
+.signin-page{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.75)
+  );
+}
+
+.signin-card{
+  width: 100%;
+  max-width: 430px;
+
+  background: rgba(15, 23, 42, 0.75);
+
+  backdrop-filter: blur(14px);
+
+  border-radius: 28px;
+
+  padding: 40px;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,0.45);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+}
+
+.signin-title{
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 38px;
+}
+
+.signin-subtitle{
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.signin-success{
+  background:
+  rgba(34,197,94,0.15);
+
+  color: #4ade80;
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  border:
+  1px solid rgba(74,222,128,0.3);
+}
+
+.signin-error{
+  background:
+  rgba(239,68,68,0.15);
+
+  color: #f87171;
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  border:
+  1px solid rgba(248,113,113,0.3);
+}
+
+.signin-label{
+  color: #ffffff;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 14px;
+}
+
+.signin-input{
+  background:
+  rgba(255,255,255,0.06) !important;
+
+  border:
+  1px solid rgba(255,255,255,0.12) !important;
+
+  color: #fff !important;
+
+  padding: 14px !important;
+
+  border-radius: 14px !important;
+
+  font-size: 14px !important;
+}
+
+.signin-input::placeholder{
+  color: #cbd5e1;
+}
+
+.signin-input:focus{
+  box-shadow: none !important;
+
+  border:
+  1px solid #d4af37 !important;
+
+  background:
+  rgba(255,255,255,0.08) !important;
+}
+
+.signin-btn{
+  width: 100%;
+
+  background:
+  linear-gradient(
+    135deg,
+    #d4af37,
+    #f5d76e
+  );
+
+  color: #111;
+
+  border: none;
+
+  padding: 15px;
+
+  border-radius: 50px;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+  0 10px 25px rgba(212,175,55,0.35);
+}
+
+.signin-btn:hover{
+  transform: translateY(-2px);
+}
+
+.signin-footer{
+  text-align: center;
+  margin-top: 25px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.signin-link{
+  color: #d4af37;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signin-link:hover{
+  color: #f5d76e;
+}
+
+/* HOUSES PAGE */
+
+.houses-page{
+  min-height: 100vh;
+}
+
+.houses-title{
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 700;
+  color: #d4af37;
+}
+
+.houses-loading{
+  text-align: center;
+  color: #0dcaf0;
+}
+
+.houses-error{
+  text-align: center;
+  color: red;
+}
+
+/* CARD */
+
+.house-card{
+  background: #fff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.1);
+
+  transition: 0.3s ease;
+
+  height: 100%;
+}
+
+.house-card:hover{
+  transform: translateY(-10px);
+
+  box-shadow:
+  0 20px 45px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+
+.house-image-wrapper{
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.house-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: 0.4s ease;
+}
+
+.house-card:hover .house-image{
+  transform: scale(1.1);
+}
+
+/* CONTENT */
+
+.house-content{
+  padding: 15px;
+}
+
+.house-name{
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.house-description{
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.house-location{
+  font-size: 13px;
+  color: #888;
+}
+
+.house-price{
+  color: #b48a2c;
+  font-weight: 700;
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* BOOK BUTTON */
+
+.house-book-link{
+  display: inline-block;
+
+  text-align: center;
+
+  background:
+  linear-gradient(
+    135deg,
+    #111,
+    #333
+  );
+
+  color: white;
+
+  padding: 10px 25px;
+
+  border-radius: 30px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: 0.3s ease;
+
+  margin-top: 10px;
+}
+
+.house-book-link:hover{
+  background:
+  linear-gradient(
+    135deg,
+    #d4af37,
+    #b48a2c
+  );
+
+  color: black;
+
+  transform: scale(1.03);
+}
+
+  /* CUSTOM STYLES  */
+.menu-card {
+  transition: 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.menu-image {
+  transition: 0.4s ease;
+}
+
+.menu-card:hover .menu-image {
+  transform: scale(1.08);
+}
+
+.order-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #111, #333);
+  color: white;
+  border-radius: 30px;
+  padding: 10px 25px;
+  border: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.order-btn:hover {
+  background: linear-gradient(135deg, #d4af37, #b48a2c);
+  color: black;
+  transform: scale(1.05);
+}
+
+ /* STYLES */
+.custom-link {
+
+  color: #eaeaea !important;
+
+  font-weight: 500;
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  transition: 0.3s ease;
+}
+
+.custom-link:hover {
+
+  background: rgba(212, 175, 55, 0.15);
+
+  color: #d4af37 !important;
+
+  transform: translateY(-2px);
+}
+
+.custom-link.active {
+
+  color: #d4af37 !important;
+
+  font-weight: 600;
+}
+
+
+/* STYLES  for videos*/
+.video-card {
+  cursor: pointer;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.video-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+}
+
+.video-thumb {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.video-title {
+  padding: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+}
+
+/* MODAL BACKDROP */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* VIDEO BOX */
+.video-box {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+}
+
+.video-box video {
+  width: 100%;
+  border-radius: 15px;
+  outline: none;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: #fff;
+  border: none;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+ /* STYLES  for Add Home*/   
+.product-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+}
+
+.img-box {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+

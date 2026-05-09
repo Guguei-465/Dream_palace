@@ -1,72 +1,169 @@
-import React, { useEffect, useState } from 'react'
-import image from '../logo.svg'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+function Menu() {
 
-const Menu = () => {
-//  declaring state variables
-const[Food, setProcucts]=useState([]);
-const[loading,setLoading]=useState("");
-const[error,setError]=useState("")
+  // NAVIGATION
+  const navigate = useNavigate();
 
-// image url
-const img_url="https://ryacksonfungo.alwaysdata.net/static/images/"
-// navigation
-const navigate = useNavigate()
+  // STATE
+  const [menu, setMenu] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // FETCH MENU ITEMS
+  useEffect(() => {
 
-// function to get Foods from database
-const getFood =async ()=>{
-  setLoading("Please wait we are retrieving the Food...")
-  try{
-     const response = await axios.get("https://ryacksonfungo.alwaysdata.net/api/menu")
-     setProcucts(response.data)
-     setLoading("")
-  }catch(error){
-    setError(error.message)
-  } 
-}
+    axios
+      .get("https://ryacksonfungo.alwaysdata.net/api/get_menu")
 
-// pre-allocate resources using useEffect
-useEffect(()=>{
- getFood()
-},[]);
+      .then((response) => {
+        setMenu(response.data);
+        setLoading(false);
+      })
+
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+
+  }, []);
+
+  // MPESA PAYMENT FUNCTION
+  const handleMpesaPayment = (item) => {
+
+    // SEND PRODUCT TO MPESA PAGE
+    navigate("/Mpesa", {
+      state: { product: item }
+    });
+
+  };
+
   return (
-    <div className='row'>
-      <h3>Available Foods</h3>
-      {loading}
-      {error}
- 
+    <div className="container py-5">
 
-      {/* Foods card design */}
+      {/* HEADING */}
+      <div className="text-center mb-5">
 
-      {Food.map( (Food)=>(
-      <div className='col-md-3 justify-center mb-4'>
-        <div className='card shardow card-margin'>
-          {/* Food image */}
-          
-          {/* Foods details */}
-          <img className="Food_img"
-           src={img_url+Food.Food_photo} 
-           alt={Food.Food_photo} />
+        <p
+          style={{
+            letterSpacing: "3px",
+            color: "#b48a2c",
+            fontWeight: "600",
+            textTransform: "uppercase",
+            fontSize: "13px",
+          }}
+        >
+          Delicious Meals
+        </p>
 
-          <div className='card-body'>
+        <h2
+          style={{
+            fontWeight: "700",
+            fontSize: "40px",
+          }}
+        >
+          Our Menu
+        </h2>
 
-          <h5 className='mt-2'> {Food.food_name}</h5>
-          <p className='text-muted'>{Food.Food_description}</p>
-          <b className='text-warning'>$.{Food.Food_cost}</b>
-
-          <button className='btn btn-dark mt-2 w-100' 
-          onClick={()=>navigate("/Mpesa",{state:{Food}})}>Book Now
-          </button>
-          </div>
-        </div>
       </div>
-      ))}
+
+      {/* LOADING */}
+      {loading && (
+        <div className="text-center">
+          <div className="spinner-border text-dark"></div>
+        </div>
+      )}
+
+      {/* MENU GRID */}
+      <div className="row g-4">
+
+        {menu.map((item) => (
+
+          <div className="col-md-4" key={item.id}>
+
+            <div
+              className="card border-0 shadow-sm h-100 menu-card"
+              style={{
+                borderRadius: "18px",
+                overflow: "hidden",
+              }}
+            >
+
+              {/* IMAGE */}
+              <div
+                style={{
+                  height: "250px",
+                  overflow: "hidden",
+                }}
+              >
+
+                <img
+                  src={`http://ryacksonfungo.alwaysdata.net/static/images/${item.menu_photo}`}
+                  alt={item.menu_name}
+                  className="w-100 h-100 menu-image"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+
+              </div>
+
+              {/* BODY */}
+              <div className="card-body p-4">
+
+                {/* NAME */}
+                <h5
+                  style={{
+                    fontWeight: "700",
+                  }}
+                >
+                  {item.menu_name}
+                </h5>
+
+                {/* DESCRIPTION */}
+                <p
+                  style={{
+                    color: "#666",
+                    fontSize: "14px",
+                    lineHeight: "1.7",
+                    minHeight: "60px",
+                  }}
+                >
+                  {item.menu_description}
+                </p>
+
+                {/* PRICE */}
+                <h6
+                  style={{
+                    color: "#b48a2c",
+                    fontWeight: "700",
+                  }}
+                >
+                  Ksh {item.menu_price}
+                </h6>
+
+                {/* ORDER BUTTON */}
+                <button
+                  onClick={() => handleMpesaPayment(item)}
+                  className="order-btn mt-3"
+                >
+                  Order Now
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+     
     </div>
-  )
+  );
 }
 
-export default Menu
-
+export default Menu;

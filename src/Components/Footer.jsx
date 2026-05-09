@@ -1,47 +1,180 @@
-import Marquee from "react-fast-marquee"
+import Marquee from "react-fast-marquee";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light mt-5">
-      <div className="container py-4">
+    <footer
+      className="text-light mt-5"
+      style={{
+        background: "#0f172a",
+      }}
+    >
+      <div className="container py-5">
         <div className="row">
 
-          {/* Brand / About */}
-          <div className="col-md-4 mb-3">
-            <h5>Dream Palace website</h5>
-            <p className="small">
-              We offer better environment for sleeping, having fun and hanging out
+          {/* BRAND */}
+          <div className="col-md-4 mb-4">
+
+            <h4
+              style={{
+                fontWeight: "700",
+                color: "#d4af37",
+              }}
+            >
+              Dream Palace
+            </h4>
+
+            <p
+              className="small"
+              style={{
+                lineHeight: "1.8",
+                color: "#cbd5e1",
+              }}
+            >
+              We offer a better environment for
+              sleeping, relaxing, having fun,
+              and enjoying luxury comfort with affordable cost. you are highly welcome!
             </p>
+
           </div>
 
-          {/* Links */}
-          <div className="col-md-4 mb-3">
-            
-            <h3>About us</h3>
-            <p><p>
-            At Dream Palace, we specialize in offering premium environment and services designed to meet everyday needs. We are committed to innovation, quality, and excellent customer experience. Our mission is to make VIP and vister fill free and fill at home.
-            </p></p>
+          {/* ABOUT */}
+          <div className="col-md-4 mb-4">
+
+            <h5
+              style={{
+                color: "#fff",
+                marginBottom: "15px",
+              }}
+            >
+              About Us
+            </h5>
+
+            <p
+              className="small"
+              style={{
+                lineHeight: "1.8",
+                color: "#cbd5e1",
+              }}
+            >
+              At Dream Palace, we provide premium
+              services and environments designed
+              for comfort, relaxation, and luxury
+              experiences for all visitors.
+            </p>
+
           </div>
 
-          {/* Contact */}
-          <div className="col-md-4 mb-3">
-            <h5>Contact</h5>
-            <p className="small mb-1">Email: dreampalace@gmail.com</p>
-            <p className="small mb-1">Phone: +2119 456 789</p>
-            <p className="small">Location: Juba City</p>
+          {/* CONTACT */}
+          <div className="col-md-4 mb-4">
+
+            <h5
+              style={{
+                color: "#fff",
+                marginBottom: "15px",
+              }}
+            >
+              Contact Us
+            </h5>
+
+            <p className="small mb-2">
+               dreampalace@gmail.com
+            </p>
+
+            <p className="small mb-2">
+               +254717250034
+            </p>
+
+            <p className="small mb-4">
+               Juba, South Sudan
+            </p>
+
+            {/* SOCIALS */}
+            <h6
+              style={{
+                color: "#d4af37",
+                marginBottom: "15px",
+              }}
+            >
+              Find Us On
+            </h6>
+
+            <div className="d-flex gap-3">
+
+              {/* FACEBOOK */}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                style={socialStyle}
+              >
+                <FaFacebookF />
+              </a>
+
+              {/* INSTAGRAM */}
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                style={socialStyle}
+              >
+                <FaInstagram />
+              </a>
+
+              {/* WHATSAPP */}
+              <a
+                href="https://wa.me/254717250034"
+                target="_blank"
+                rel="noreferrer"
+                style={socialStyle}
+              >
+                <FaWhatsapp />
+              </a>
+
+            </div>
+
           </div>
 
         </div>
       </div>
 
-      {/* Bottom Bar */}
-    <Marquee speed={50} gradient={false}>
-      ⚡  D.P. All rights reserved @dreampalace ⚡Welcome! 
-      *..Developed by @ryackson..*
-    </Marquee>
-  
-     </footer>
-  )
-}
+      {/* BOTTOM BAR */}
+      <div
+        style={{
+          background: "#111827",
+          padding: "10px 0",
+          borderTop:
+            "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
+        <Marquee speed={50} gradient={false}>
+          ⚡ D.P. All rights reserved @DreamPalace
+          ⚡ Welcome! *..Developed by @ryackson..*
+        </Marquee>
+      </div>
 
-export default Footer
+    </footer>
+  );
+};
+
+// SOCIAL ICON STYLE
+const socialStyle = {
+  width: "45px",
+  height: "45px",
+  borderRadius: "50%",
+  background: "rgba(255,255,255,0.08)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: "#fff",
+  textDecoration: "none",
+  fontSize: "18px",
+  transition: "0.3s ease",
+  border: "1px solid rgba(255,255,255,0.08)",
+};
+
+export default Footer;

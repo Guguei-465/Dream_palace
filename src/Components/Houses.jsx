@@ -1,74 +1,120 @@
- import React, { useEffect, useState } from 'react'
- import image from '../logo.svg'
- import axios from 'axios';
- import { useNavigate } from 'react-router-dom';
- 
- 
- const Houses = () => {
- //  declaring state variables
- const[house, setProcucts]=useState([]);
- const[loading,setLoading]=useState("");
- const[error,setError]=useState("")
- 
- // image url
- const img_url="https://ryacksonfungo.alwaysdata.net/static/images/"
- // navigation
- const navigate = useNavigate()
- 
- 
- // function to get houses from database
- const gethouse =async ()=>{
-   setLoading("Please wait we are retrieving the house...")
-   try{
-      const response = await axios.get("https://ryacksonfungo.alwaysdata.net/api/house")
-      setProcucts(response.data)
-      setLoading("")
-   }catch(error){
-     setError(error.message)
-   } 
- }
- 
- // pre-allocate resources using useEffect
- useEffect(()=>{
-  gethouse()
- },[]);
-   return (
-     <div className='row'>
-       <h3>Available houses</h3>
-       {loading}
-       {error}
-  
- 
-       {/* houses card design */}
- 
-       {house.map( (house)=>(
-       <div className='col-md-3 justify-center mb-4'>
-         <div className='card shardow card-margin'>
-           {/* house image */}
-           
-           {/* houses details */}
-           <img className="house_img"
-            src={img_url+house.house_photo} 
-            alt={house.house_photo} />
- 
-           <div className='card-body'>
- 
-           {/* <h5 className='mt-2'> {house.house_name}</h5> */}
-           <p className='text-muted'>{house.house_description}</p>
-           <p className='text-muted'>{house.house_number}</p>
-           <b className='text-warning'>$.{house.house_payment}</b>
- 
-           <button className='btn btn-dark mt-2 w-100' 
-           onClick={()=>navigate("/Mpesa",{state:{house}})}>Book Now
-           </button>
-           </div>
-         </div>
-       </div>
-       ))}
-     </div>
-   )
- }
- 
- export default Houses
- 
- 
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+function Houses() {
+
+  const [houses, setHouses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+
+    fetch("http://ryacksonfungo.alwaysdata.net/api/get_houses")
+
+      .then((res) => res.json())
+
+      .then((data) => {
+
+        setHouses(data);
+        setLoading(false);
+
+      })
+
+      .catch((err) => {
+
+        console.log(err);
+
+        setError(err.message);
+
+        setLoading(false);
+
+      });
+
+  }, []);
+
+  return (
+
+    <div className="houses-page container py-5">
+
+      {/* HEADER */}
+      <h3 className="houses-title">
+        Explore Our Houses
+      </h3>
+
+      {/* LOADING */}
+      {loading && (
+        <p className="houses-loading">
+          Loading houses...
+        </p>
+      )}
+
+      {/* ERROR */}
+      {error && (
+        <p className="houses-error">
+          {error}
+        </p>
+      )}
+
+      {/* GRID */}
+      <div className="row g-4">
+
+        {houses.map((house) => (
+
+          <div className="col-md-4" key={house.id}>
+
+            <div className="house-card">
+
+              {/* IMAGE */}
+              <div className="house-image-wrapper">
+
+                <img
+                  src={`http://ryacksonfungo.alwaysdata.net/static/images/${house.house_photo}`}
+                  alt={house.house_name}
+                  className="house-image"
+                />
+
+              </div>
+
+              {/* CONTENT */}
+              <div className="house-content">
+
+                <h5 className="house-name">
+                  {house.house_name}
+                </h5>
+
+                <p className="house-description">
+                  {house.house_description}
+                </p>
+
+                <p className="house-location">
+                  {house.house_location}
+                </p>
+
+                <div className="house-price">
+                  Ksh {house.house_price} / night
+                </div>
+
+                {/* BOOK BUTTON */}
+                <Link
+                  to="/Mpesa"
+                  state={{ product: house }}
+                  className="house-book-link"
+                >
+                  Book Now
+                </Link>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Houses;
