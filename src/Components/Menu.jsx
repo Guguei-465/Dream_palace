@@ -140,7 +140,7 @@ function Menu() {
                     fontWeight: "700",
                   }}
                 >
-                  Ksh {item.menu_price}
+                  SSP. {item.menu_price}
                 </h6>
 
                 {/* ORDER BUTTON */}

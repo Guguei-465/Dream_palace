@@ -91,7 +91,7 @@ function Houses() {
                 </p>
 
                 <div className="house-price">
-                  Ksh {house.house_price} / night
+                  SSP. {house.house_price} / night
                 </div>
 
                 {/* BOOK BUTTON */}

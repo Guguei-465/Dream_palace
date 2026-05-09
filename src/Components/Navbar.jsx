@@ -7,6 +7,9 @@ function Navbar() {
 
   const [search, setSearch] = useState("");
 
+  // NAVBAR STATE
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
 
   // GET USER
@@ -24,12 +27,21 @@ function Navbar() {
 
   }, []);
 
+  // CLOSE NAVBAR
+  const closeNavbar = () => {
+
+    setIsOpen(false);
+
+  };
+
   // LOGOUT
   const handleLogout = () => {
 
     localStorage.removeItem("user");
 
     setUser(null);
+
+    setIsOpen(false);
 
     navigate("/Signup");
   };
@@ -51,6 +63,9 @@ function Navbar() {
       });
 
       setSearch("");
+
+      // CLOSE NAVBAR AFTER SEARCH
+      setIsOpen(false);
     }
   };
 
@@ -69,6 +84,7 @@ function Navbar() {
       <NavLink
         className="navbar-brand fw-bold text-white"
         to="/"
+        onClick={closeNavbar}
       >
         DREAM
         <span style={{ color: "#d4af37" }}>
@@ -80,14 +96,17 @@ function Navbar() {
       <button
         className="navbar-toggler"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
+        onClick={() => setIsOpen(!isOpen)}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
 
       <div
-        className="collapse navbar-collapse"
+        className={
+          isOpen
+            ? "collapse navbar-collapse show"
+            : "collapse navbar-collapse"
+        }
         id="navbarNav"
       >
 
@@ -137,6 +156,7 @@ function Navbar() {
             <NavLink
               className="nav-link custom-link"
               to="/"
+              onClick={closeNavbar}
             >
               Home
             </NavLink>
@@ -146,6 +166,7 @@ function Navbar() {
             <NavLink
               className="nav-link custom-link"
               to="/Videos"
+              onClick={closeNavbar}
             >
               Videos
             </NavLink>
@@ -177,6 +198,7 @@ function Navbar() {
                 <NavLink
                   className="nav-link custom-link"
                   to="/Menu"
+                  onClick={closeNavbar}
                 >
                   Menu
                 </NavLink>
@@ -186,6 +208,7 @@ function Navbar() {
                 <NavLink
                   className="nav-link custom-link"
                   to="/Houses"
+                  onClick={closeNavbar}
                 >
                   Houses
                 </NavLink>
@@ -193,8 +216,9 @@ function Navbar() {
 
               <li className="nav-item">
                 <NavLink
-                  className="nav-link custom-link bg-warning w-45px"
+                  className="nav-link custom-link bg-warning"
                   to="/Mpesa"
+                  onClick={closeNavbar}
                 >
                   Book Now
                 </NavLink>
@@ -205,7 +229,6 @@ function Navbar() {
         </ul>
       </div>
 
-      
     </nav>
   );
 }
