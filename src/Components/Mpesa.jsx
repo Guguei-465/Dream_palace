@@ -214,7 +214,7 @@ const Mpesa = () => {
             </p>
 
             <h5 className="mpesa-price">
-              Ksh. {
+              SSP. {
 
                 product?.product_cost ||
 
