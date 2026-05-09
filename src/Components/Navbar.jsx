@@ -87,7 +87,7 @@ function Navbar() {
         onClick={closeNavbar}
       >
         DREAM
-        <span style={{ color: "#d4af37" }}>
+        <span style={{ color: "#11100f" }}>
           {" "}PALACE
         </span>
       </NavLink>
@@ -214,9 +214,9 @@ function Navbar() {
                 </NavLink>
               </li>
 
-              <li className="nav-item">
+              <li className="nav-item ">
                 <NavLink
-                  className="nav-link custom-link bg-warning"
+                  className="nav-link custom-link  btn btn-warning bg-dark  mt-3"
                   to="/Mpesa"
                   onClick={closeNavbar}
                 >
