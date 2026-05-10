@@ -16,6 +16,7 @@ import Footer from './Components/Footer';
 import Videos from './Components/Videos';
 import Carousel from './Components/Carousel';
 import Search from "./Components/Search";
+import Dashboard from './Components/Dashboard';
 
 function App() {
 
@@ -55,6 +56,8 @@ function App() {
           <Route path="/Mpesa" element={<Mpesa />} />
 
           <Route path="/Search" element={<Search />} />
+
+          <Route path="/Dashboard" element={<Dashboard />} />
 
         </Routes>
 

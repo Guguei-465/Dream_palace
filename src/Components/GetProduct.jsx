@@ -37,7 +37,8 @@ const GetProduct = () => {
 
       {/* TITLE */}
       <h3 className="text-center mb-4 fw-bold text-warning">
-        Welcome to Dream Palace
+        Welcome to Dream Palace 
+        <h5 className="text-dark">Explore how Dream Palace looks like</h5>
       </h3>
 
       {/* STATUS */}

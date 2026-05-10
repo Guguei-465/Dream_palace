@@ -45,7 +45,7 @@ function Navbar() {
 
     setIsOpen(false);
 
-    navigate("/Signup");
+    navigate("/Signin");
   };
 
   // SEARCH
@@ -231,7 +231,7 @@ function Navbar() {
 
           </li>
 
-          {/* VIDEOS */}
+          {/* VIDEOS - PUBLIC */}
           <li className="nav-item">
 
             <NavLink
@@ -249,45 +249,6 @@ function Navbar() {
           </li>
 
           {user ? (
-
-            <>
-
-              {/* USERNAME */}
-              <li className="nav-item">
-
-                <span className="nav-link text-dark fw-bold">
-
-                  <i className="bi bi-person-circle me-2"></i>
-
-                  {user.username}
-
-                </span>
-
-              </li>
-
-              {/* LOGOUT */}
-              <li className="nav-item">
-
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-dark mt-2"
-                  style={{
-                    borderRadius: "30px",
-                    padding: "8px 18px",
-                  }}
-                >
-
-                  <i className="bi bi-box-arrow-right me-2"></i>
-
-                  Logout
-
-                </button>
-
-              </li>
-
-            </>
-
-          ) : (
 
             <>
 
@@ -364,7 +325,86 @@ function Navbar() {
 
               </li>
 
+              {/* USERNAME */}
+              <li className="nav-item">
+
+                <span className="nav-link text-dark fw-bold">
+
+                  <i className="bi bi-person-circle me-2"></i>
+
+                  {user.username}
+
+                </span>
+
+              </li>
+
+              {/* LOGOUT */}
+              <li className="nav-item">
+
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-dark mt-2"
+                  style={{
+                    borderRadius: "30px",
+                    padding: "8px 18px",
+                  }}
+                >
+
+                  <i className="bi bi-box-arrow-right me-2"></i>
+
+                  Logout
+
+                </button>
+
+              </li>
+
             </>
+
+          ) : (
+
+            <>
+
+              {/* LOGIN */}
+              <li className="nav-item">
+
+                <NavLink
+                  className="nav-link text-white fw-semibold mt-2"
+                  to="/Signin"
+                  onClick={closeNavbar}
+                  style={{
+                    background: "#111",
+
+                    borderRadius: "30px",
+
+                    display: "inline-flex",
+
+                    alignItems: "center",
+
+                    gap: "8px",
+
+                    padding: "8px 20px",
+
+                    width: "auto",
+
+                    fontSize: "14px",
+
+                    textDecoration: "none",
+
+                    boxShadow:
+                      "0 4px 12px rgba(0,0,0,0.25)",
+                  }}
+                >
+
+                  <i className="bi bi-box-arrow-in-right"></i>
+
+                  Login
+
+                </NavLink>
+
+              </li>
+
+            </>
+
           )}
 
         </ul>

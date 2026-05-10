@@ -23,9 +23,9 @@ const Videos = () => {
     <div className="container py-5">
 
       {/* HEADER */}
-      <h3 className="text-center mb-4 fw-bold text-warning">
-        Watch Dream Palace Videos
-      </h3>
+      <h5 className="text-center mb-4 fw-bold text-warning">
+        Watch Dream Palace sample Videos for verious places
+      </h5>
 
       {/* GRID */}
       <div className="row g-4">

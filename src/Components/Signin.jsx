@@ -66,7 +66,7 @@ const Signin = () => {
         // REDIRECT
         setTimeout(() => {
 
-          navigate("/GetProduct");
+          navigate("/Dashboard");
 
         }, 2000);
 
