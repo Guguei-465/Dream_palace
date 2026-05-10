@@ -9,7 +9,7 @@ function Houses() {
 
   useEffect(() => {
 
-    fetch("http://ryacksonfungo.alwaysdata.net/api/get_houses")
+    fetch("https://ryacksonfungo.alwaysdata.net/api/get_houses")
 
       .then((res) => res.json())
 
@@ -68,7 +68,7 @@ function Houses() {
               <div className="house-image-wrapper">
 
                 <img
-                  src={`http://ryacksonfungo.alwaysdata.net/static/images/${house.house_photo}`}
+                  src={`https://ryacksonfungo.alwaysdata.net/static/images/${house.house_photo}`}
                   alt={house.house_name}
                   className="house-image"
                 />

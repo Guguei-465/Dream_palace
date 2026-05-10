@@ -99,7 +99,7 @@ function Menu() {
               >
 
                 <img
-                  src={`http://ryacksonfungo.alwaysdata.net/static/images/${item.menu_photo}`}
+                  src={`https://ryacksonfungo.alwaysdata.net/static/images/${item.menu_photo}`}
                   alt={item.menu_name}
                   className="w-100 h-100 menu-image"
                   style={{
