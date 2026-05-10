@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -20,7 +19,6 @@ import Carousel from './Components/Carousel';
 import Search from "./Components/Search";
 
 function App() {
-  const [image, setImage] = useState(null);
 
   return (
     <Router>
