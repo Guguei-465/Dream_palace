@@ -224,9 +224,7 @@ function Navbar() {
             >
 
               <i className="bi bi-house-fill me-2"></i>
-
               Home
-
             </NavLink>
 
           </li>
@@ -262,9 +260,7 @@ function Navbar() {
                 >
 
                   <i className="bi bi-cup-hot-fill me-2"></i>
-
                   Menu
-
                 </NavLink>
 
               </li>
@@ -279,9 +275,7 @@ function Navbar() {
                 >
 
                   <i className="bi bi-building-fill me-2"></i>
-
                   Houses
-
                 </NavLink>
 
               </li>
@@ -318,9 +312,7 @@ function Navbar() {
                 >
 
                   <i className="bi bi-cart-fill"></i>
-
                   Book Now
-
                 </NavLink>
 
               </li>
@@ -351,9 +343,7 @@ function Navbar() {
                 >
 
                   <i className="bi bi-box-arrow-right me-2"></i>
-
                   Logout
-
                 </button>
 
               </li>
@@ -396,9 +386,7 @@ function Navbar() {
                 >
 
                   <i className="bi bi-box-arrow-in-right"></i>
-
                   Login
-
                 </NavLink>
 
               </li>
