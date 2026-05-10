@@ -32,7 +32,7 @@ function AddHouses() {
       formData.append("house_photo", house_photo);
 
       const response = await axios.post(
-        "http://ryacksonfungo.alwaysdata.net/api/add_house",
+        "https://ryacksonfungo.alwaysdata.net/api/add_house",
         formData,
         {
           headers: {
