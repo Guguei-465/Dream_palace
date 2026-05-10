@@ -5,8 +5,6 @@ function Navbar() {
 
   const [user, setUser] = useState(null);
 
-  const [search, setSearch] = useState("");
-
   // NAVBAR STATE
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,36 +44,19 @@ function Navbar() {
     navigate("/Signup");
   };
 
-  // SEARCH
-  const handleSearch = (e) => {
-
-    e.preventDefault();
-
-    if (search.trim() !== "") {
-
-      navigate("/Search", {
-
-        state: {
-
-          query: search
-
-        }
-      });
-
-      setSearch("");
-
-      // CLOSE NAVBAR AFTER SEARCH
-      setIsOpen(false);
-    }
-  };
-
   return (
+
     <nav
       className="navbar navbar-expand-lg position-absolute top-0 start-0 w-100"
       style={{
         zIndex: 1000,
-        padding: "18px 50px",
+        padding:
+          window.innerWidth <= 768
+            ? "12px 15px"
+            : "18px 50px",
+
         background: "rgba(226, 212, 15, 0.7)",
+
         backdropFilter: "blur(12px)",
       }}
     >
@@ -85,20 +66,36 @@ function Navbar() {
         className="navbar-brand fw-bold text-white"
         to="/"
         onClick={closeNavbar}
+        style={{
+          fontSize:
+            window.innerWidth <= 768
+              ? "20px"
+              : "28px",
+        }}
       >
+
         DREAM
+
         <span style={{ color: "#11100f" }}>
           {" "}PALACE
         </span>
+
       </NavLink>
 
       {/* TOGGLER */}
       <button
-        className="navbar-toggler"
+        className="navbar-toggler border-0"
         type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="navbar-toggler-icon"></span>
+
+        <span
+          className="navbar-toggler-icon"
+          style={{
+            filter: "invert(1)",
+          }}
+        ></span>
+
       </button>
 
       <div
@@ -110,49 +107,24 @@ function Navbar() {
         id="navbarNav"
       >
 
-        {/* SEARCH BAR */}
-        <form
-          onSubmit={handleSearch}
-          className="d-flex mx-auto"
-          style={{ width: "320px" }}
+        {/* LINKS */}
+        <ul
+          className="navbar-nav ms-auto align-items-lg-center gap-lg-3"
+          style={{
+            textAlign:
+              window.innerWidth <= 768
+                ? "center"
+                : "left",
+
+            marginTop:
+              window.innerWidth <= 768
+                ? "20px"
+                : "0",
+          }}
         >
 
-          <input
-            type="text"
-            placeholder="Search what you wants here..."
-            value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
-            className="form-control"
-            style={{
-              borderRadius: "30px 0 0 30px",
-              border: "none",
-              padding: "8px 15px",
-              outline: "none",
-            }}
-          />
-
-          <button
-            type="submit"
-            className="btn"
-            style={{
-              background: "#d4af37",
-              color: "#111",
-              fontWeight: "600",
-              borderRadius: "0 30px 30px 0",
-              padding: "8px 15px",
-            }}
-          >
-            Search
-          </button>
-
-        </form>
-
-        {/* LINKS */}
-        <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-
           <li className="nav-item">
+
             <NavLink
               className="nav-link custom-link"
               to="/"
@@ -160,9 +132,11 @@ function Navbar() {
             >
               Home
             </NavLink>
+
           </li>
 
           <li className="nav-item">
+
             <NavLink
               className="nav-link custom-link"
               to="/Videos"
@@ -170,31 +144,40 @@ function Navbar() {
             >
               Videos
             </NavLink>
+
           </li>
 
           {user ? (
+
             <>
 
               <li className="nav-item">
-                <span className="nav-link text-warning fw-semibold">
+
+                <span className="nav-link text-dark fw-bold">
                   {user.username}
                 </span>
+
               </li>
 
               <li className="nav-item">
+
                 <button
                   onClick={handleLogout}
-                  className="btn btn-outline-warning"
+                  className="btn btn-dark mt-2"
                 >
                   Logout
                 </button>
+
               </li>
 
             </>
+
           ) : (
+
             <>
 
               <li className="nav-item">
+
                 <NavLink
                   className="nav-link custom-link"
                   to="/Menu"
@@ -202,9 +185,11 @@ function Navbar() {
                 >
                   Menu
                 </NavLink>
+
               </li>
 
               <li className="nav-item">
+
                 <NavLink
                   className="nav-link custom-link"
                   to="/Houses"
@@ -212,23 +197,35 @@ function Navbar() {
                 >
                   Houses
                 </NavLink>
+
               </li>
 
-              <li className="nav-item ">
+              <li className="nav-item">
+
                 <NavLink
-                  className="nav-link custom-link  btn btn-warning bg-dark  mt-3"
+                  className="nav-link text-white fw-semibold mt-2"
                   to="/Mpesa"
                   onClick={closeNavbar}
+                  style={{
+                    background: "#111",
+                    borderRadius: "30px",
+                    display: "inline-block",
+                    padding: "8px 20px",
+                    width: "auto",
+                    fontSize: "14px",
+                    textDecoration: "none",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+                  }}
                 >
                   Book Now
                 </NavLink>
+
               </li>
 
             </>
           )}
         </ul>
       </div>
-
     </nav>
   );
 }
