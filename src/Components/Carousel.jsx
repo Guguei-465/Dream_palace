@@ -123,8 +123,8 @@ const Carousel = () => {
 
         height:
           window.innerWidth <= 768
-            ? "550px"
-            : "430px",
+            ? "480px"
+            : "400px",
       }}
     >
 
@@ -173,7 +173,7 @@ const Carousel = () => {
 
           )}
 
-          {/* OVERLAY */}
+          {/* DARK OVERLAY */}
           <div
             className="position-absolute top-0 start-0 w-100 h-100"
             style={{
@@ -196,12 +196,12 @@ const Carousel = () => {
               style={{
                 top:
                   window.innerWidth <= 768
-                    ? "140px"
-                    : "90px",
+                    ? "85px"
+                    : "25px",
 
                 width:
                   window.innerWidth <= 768
-                    ? "90%"
+                    ? "92%"
                     : "430px",
 
                 zIndex: 30,
@@ -215,7 +215,7 @@ const Carousel = () => {
 
                 <input
                   type="text"
-                  placeholder="Search here"
+                  placeholder="Search here..."
                   value={search}
                   onChange={(e) =>
                     setSearch(e.target.value)
@@ -273,8 +273,8 @@ const Carousel = () => {
 
                 marginTop:
                   window.innerWidth <= 768
-                    ? "60px"
-                    : "40px",
+                    ? "120px"
+                    : "20px",
 
                 maxWidth: "500px",
               }}
