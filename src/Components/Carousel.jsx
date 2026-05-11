@@ -121,6 +121,11 @@ const Carousel = () => {
         width: "95%",
         maxWidth: "1100px",
 
+        marginTop:
+          window.innerWidth <= 768
+            ? "110px"
+            : "95px",
+
         height:
           window.innerWidth <= 768
             ? "480px"
